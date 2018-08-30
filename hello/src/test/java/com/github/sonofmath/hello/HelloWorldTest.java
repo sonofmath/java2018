@@ -19,6 +19,7 @@ import static org.junit.Assert.*;
 public class HelloWorldTest {
     
     public HelloWorldTest() {
+        System.out.println("this is a test");
     }
     
     @BeforeClass
