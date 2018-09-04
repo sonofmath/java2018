@@ -22,6 +22,8 @@ public class HelloWorldTest {
         System.out.println("this is a test");
     }
     
+    /* just a comment to test*/
+    
     @BeforeClass
     public static void setUpClass() {
     }
