@@ -102,4 +102,22 @@ public class SoylentTest {
         assertEquals(6, instance.drinks[0]);
         assertEquals(4, instance.drinks[1]);
     }
+    
+    @Test
+    public void testCase2() throws Exception {
+        Soylent instance = new Soylent();
+        instance.cases = 4;
+        assertEquals(4, instance.cases);
+        instance.drinks = new int[instance.cases];
+        int i = 0;
+        instance.drinks[i++] = 2020;
+        instance.drinks[i++] = 2200;
+        instance.drinks[i++] = 2450;
+        instance.drinks[i++] = 2500;
+        instance.solve();
+        assertEquals(5, instance.drinks[0]);
+        assertEquals(5, instance.drinks[1]);
+        assertEquals(6, instance.drinks[2]);
+        assertEquals(6, instance.drinks[3]);
+    }
 }
