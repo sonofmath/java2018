@@ -18,6 +18,21 @@ public class Soylent {
         }
     } 
     
+    void go() throws Exception{
+        in = new Scanner(System.in);
+        
+        for(;;){
+            if(haveNumCases()){
+                readTestCases(3);
+                solve();
+                write();
+            }
+            else{
+                break;
+            }
+        }
+    }  
+    
     Scanner in = new Scanner(System.in);
     
     int cases;
@@ -34,9 +49,16 @@ public class Soylent {
         }
     }
     
+    private boolean haveNumCases() {
+        return in.hasNextInt();
+    }
     void solve() {
         for (int i = 0; i < drinks.length; i++) {
-            drinks[i] = drinks[i]/400;
+            if (drinks[i]%400 >= 100) {
+                drinks[i] = (drinks[i]/400) + 1;
+            } else {
+                drinks[i] = (drinks[i]/400);
+            }
         } 
     }
     

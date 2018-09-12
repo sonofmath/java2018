@@ -38,18 +38,6 @@ public class SoylentTest {
     }
 
     /**
-     * Test of main method, of class Soylent.
-     */
-    @Test
-    public void testMain() throws Exception {
-        System.out.println("main");
-        String[] args = null;
-        Soylent.main(args);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
-    }
-
-    /**
      * Test of readTestCases method, of class Soylent.
      */
     @Test
@@ -69,9 +57,12 @@ public class SoylentTest {
     public void testSolve() {
         System.out.println("solve");
         Soylent instance = new Soylent();
+        instance.drinks = new int[2];
+        instance.drinks[0] = 2600;
+        instance.drinks[1] = 2200;
         instance.solve();
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        assertEquals(6, instance.drinks[0]);
+        assertEquals(5, instance.drinks[1]);
     }
 
     /**
@@ -99,8 +90,8 @@ public class SoylentTest {
         instance.drinks[0] = 2543;
         instance.drinks[1] = 1953;
         instance.solve();
-        assertEquals(6, instance.drinks[0]);
-        assertEquals(4, instance.drinks[1]);
+        assertEquals(7, instance.drinks[0]);
+        assertEquals(5, instance.drinks[1]);
     }
     
     @Test
@@ -116,8 +107,8 @@ public class SoylentTest {
         instance.drinks[i++] = 2500;
         instance.solve();
         assertEquals(5, instance.drinks[0]);
-        assertEquals(5, instance.drinks[1]);
+        assertEquals(6, instance.drinks[1]);
         assertEquals(6, instance.drinks[2]);
-        assertEquals(6, instance.drinks[3]);
+        assertEquals(7, instance.drinks[3]);
     }
 }
