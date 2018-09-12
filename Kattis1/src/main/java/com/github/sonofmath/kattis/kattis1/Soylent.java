@@ -16,7 +16,7 @@ public class Soylent {
             soylent.solve();
             soylent.write();
         }
-    }
+    } 
     
     Scanner in = new Scanner(System.in);
     
