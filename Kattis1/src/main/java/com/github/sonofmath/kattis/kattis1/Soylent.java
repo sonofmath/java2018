@@ -24,19 +24,14 @@ public class Soylent {
     int[] drinks;
     
     public void readTestCases(int _cases) {
-        if (_cases < 0) {
+        cases = _cases;
+        if (cases < 0) {
             cases = _cases*(-1);
-        } else {
-            cases = _cases;
-        }
+        } 
         drinks = new int[cases];
         for (int i = 0; i < drinks.length; i++) {
             drinks[i] = in.nextInt();
         }
-    }
-    
-    private boolean haveTestCase() {
-        return in.hasNextInt();
     }
     
     void solve() {

@@ -86,20 +86,4 @@ public class SoylentTest {
         fail("The test case is a prototype.");
     }
     
-    /**
-     * Test of solve method, of class Soylent.
-     * @throws java.lang.Exception
-     */
-    @Test
-    public void testCase1() throws Exception {
-        Soylent instance = new Soylent();
-        instance.cases = 3;
-        assertEquals(3, instance.cases);
-        instance.drinks = new int[2];
-        instance.drinks[0] = 2543;
-        instance.drinks[1] = 1953;
-        instance.solve();
-        assertEquals(6, instance.drinks[0]);
-        assertEquals(4, instance.drinks[1]);
-    }
 }
