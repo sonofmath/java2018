@@ -17,21 +17,15 @@ public class Soylent {
             soylent.write();
         }
     } 
-    
-    void go() throws Exception{
-        in = new Scanner(System.in);
-        
-        for(;;){
-            if(haveNumCases()){
-                readTestCases(3);
-                solve();
-                write();
-            }
-            else{
-                break;
-            }
+
+    public static boolean isInt(String input) {
+        try {
+            Integer.parseInt(input);
+        } catch(NumberFormatException | NullPointerException e) {
+            return false;
         }
-    }  
+        return true;
+    }
     
     Scanner in = new Scanner(System.in);
     
