@@ -12,13 +12,19 @@ public class Soylent {
         int[] drinks;
         while(in.hasNextLine()) {
             Soylent soylent = new Soylent();
-            soylent.readTestCases(in.nextInt());
-            soylent.solve();
-            soylent.write();
+            String input = in.nextLine();
+            if(soylent.isInt(input)) {
+                soylent.readTestCases(input);
+                soylent.solve();
+                soylent.write();
+            }
         }
     } 
 
-    public static boolean isInt(String input) {
+    public boolean isInt(String input) {
+        if (input.isEmpty()) {
+            return false;
+        }
         try {
             Integer.parseInt(input);
         } catch(NumberFormatException | NullPointerException e) {
@@ -26,26 +32,31 @@ public class Soylent {
         }
         return true;
     }
+   
     
     Scanner in = new Scanner(System.in);
     
     int cases;
     int[] drinks;
     
-    public void readTestCases(int _cases) {
-        cases = _cases;
-        if (cases < 0) {
-            cases = _cases*(-1);
-        } 
-        drinks = new int[cases];
-        for (int i = 0; i < drinks.length; i++) {
-            drinks[i] = in.nextInt();
+    public void readTestCases(String _cases) {
+        if (isInt(_cases)) {
+            cases = Integer.parseInt(_cases);
+            if (cases < 0) {
+            cases = cases*(-1);
+            }
+            drinks = new int[cases];
+            for (int i = 0; i < drinks.length; i++) {
+                String input = in.nextLine();
+                if (isInt(input)) {
+                    drinks[i] = Integer.parseInt(input);
+                } else {
+                    --i;
+                }
+            }
         }
     }
     
-    private boolean haveNumCases() {
-        return in.hasNextInt();
-    }
     void solve() {
         for (int i = 0; i < drinks.length; i++) {
             if (drinks[i]%400 >= 100) {
