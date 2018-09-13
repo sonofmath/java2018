@@ -38,19 +38,6 @@ public class SoylentTest {
     }
 
     /**
-     * Test of readTestCases method, of class Soylent.
-     */
-    @Test
-    public void testReadTestCases() {
-        System.out.println("readTestCases");
-        int _cases = 0;
-        Soylent instance = new Soylent();
-        instance.readTestCases(_cases);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
-    }
-
-    /**
      * Test of solve method, of class Soylent.
      */
     @Test
@@ -59,23 +46,13 @@ public class SoylentTest {
         Soylent instance = new Soylent();
         instance.drinks = new int[2];
         instance.drinks[0] = 2600;
-        instance.drinks[1] = 2200;
+        int i = 2050;
+        instance.drinks[1] = i;
         instance.solve();
-        assertEquals(6, instance.drinks[0]);
+        assertEquals(7, instance.drinks[0]);
         assertEquals(5, instance.drinks[1]);
     }
 
-    /**
-     * Test of write method, of class Soylent.
-     */
-    @Test
-    public void testWrite() {
-        System.out.println("write");
-        Soylent instance = new Soylent();
-        instance.write();
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
-    }
     
     /**
      * Test of solve method, of class Soylent.
@@ -110,5 +87,12 @@ public class SoylentTest {
         assertEquals(6, instance.drinks[1]);
         assertEquals(6, instance.drinks[2]);
         assertEquals(7, instance.drinks[3]);
+    }
+
+    @Test
+    public void testInput() throws Exception {
+        Soylent instance = new Soylent();
+        assertTrue(instance.isInt("2400"));
+        assertFalse(instance.isInt("hola"));
     }
 }
