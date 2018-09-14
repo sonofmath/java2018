@@ -5,6 +5,10 @@
  */
 package com.github.sonofmath.kattis.kattis1;
 
+import java.io.ByteArrayOutputStream;
+import java.io.FileInputStream;
+import java.io.InputStream;
+import java.io.PrintStream;
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;
@@ -59,7 +63,7 @@ public class SoylentTest {
      * @throws java.lang.Exception
      */
     @Test
-    public void testCase1() throws Exception {
+    public void testCorrectCase1() throws Exception {
         Soylent instance = new Soylent();
         instance.cases = 3;
         assertEquals(3, instance.cases);
@@ -72,7 +76,7 @@ public class SoylentTest {
     }
     
     @Test
-    public void testCase2() throws Exception {
+    public void testCorrectCase2() throws Exception {
         Soylent instance = new Soylent();
         instance.cases = 4;
         assertEquals(4, instance.cases);
@@ -90,9 +94,56 @@ public class SoylentTest {
     }
 
     @Test
-    public void testInput() throws Exception {
+    public void testErrors1() throws Exception {
         Soylent instance = new Soylent();
         assertTrue(instance.isInt("2400"));
         assertFalse(instance.isInt("hola"));
     }
+    
+    @Test
+    public void testErrors2() throws Exception {
+        Soylent instance = new Soylent();
+        assertFalse(instance.isInt(" "));
+        assertFalse(instance.isInt("hola"));
+    }
+    
+    @Test
+    public void testExample1() throws Exception {
+        InputStream saveIn = System.in;
+        PrintStream saveOut = System.out;
+        ByteArrayOutputStream out = new ByteArrayOutputStream();
+        PrintStream ps = new PrintStream(out);
+        try {  // Changes the input to FileInputStream
+            System.setIn(new FileInputStream("soylent.in.1"));
+            System.setOut(ps);
+            Soylent.main(null);
+        } finally {  // Restores the input 
+            System.setIn(saveIn);
+            System.setOut(saveOut);
+        }
+        assertEquals(out.toString(),
+                "5" + System.lineSeparator()
+                + "4");
+    }
+    /*
+    @Test
+    public void testMixedCase1() throws Exception {
+        Soylent instance = new Soylent();
+       
+        if (instance.isInt(input)) {
+                assertTrue(instance.isInt(input[j]));
+                }
+        int i = 0;
+        instance.drinks[i++] = "2020";
+        input[i++] = " ";
+        input[i++] = "2200";
+        input[i++] = "buenos dias";
+        input[i++] = "2450";
+        for (int j = 0; j < i; ++j) {
+            if (instance.isInt(input[j])) {
+                assertTrue(instance.isInt(input[j]));
+                }
+        }
+    }
+    */
 }
