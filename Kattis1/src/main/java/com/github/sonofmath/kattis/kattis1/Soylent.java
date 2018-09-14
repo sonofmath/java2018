@@ -1,6 +1,7 @@
 
 package com.github.sonofmath.kattis.kattis1;
 
+import java.io.PrintStream;
 import java.util.Scanner;
 /**
  *
@@ -21,6 +22,8 @@ public class Soylent {
         }
     } 
 
+    
+    
     public boolean isInt(String input) {
         if (input.isEmpty()) {
             return false;
@@ -35,6 +38,7 @@ public class Soylent {
    
     
     Scanner in = new Scanner(System.in);
+    PrintStream out;
     
     int cases;
     int[] drinks;
@@ -46,6 +50,7 @@ public class Soylent {
             cases = cases*(-1);
             }
             drinks = new int[cases];
+            in.nextLine();
             for (int i = 0; i < drinks.length; i++) {
                 String input = in.nextLine();
                 if (isInt(input)) {
@@ -72,6 +77,10 @@ public class Soylent {
             System.out.println(drinks[i]);
         }
     }    
+    
+    private boolean haveTestCase() {
+        return in.hasNextInt();
+    }
 }
     
 
