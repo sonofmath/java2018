@@ -10,21 +10,27 @@ import java.util.Scanner;
 public class Soylent {
     public static void main(String [] args) throws Exception {
         Scanner in = new Scanner(System.in);
-        int[] drinks;
-        while(in.hasNextLine()) {
-            Soylent soylent = new Soylent();
-            String input = in.nextLine();
-            if(soylent.isInt(input)) {
-                soylent.readTestCases(input);
-                soylent.solve();
-                soylent.write();
-            }
-        }
+        Soylent soylent = new Soylent();
+        soylent.go();
     } 
 
+    void go() throws Exception{
+        in = new Scanner(System.in);
+        out = System.out;
+        
+        for(;;){
+            if(haveTestCase()){
+                readTestCases();
+                solve();
+                write();
+            }
+            else{
+                break;
+            }
+        }
+    }  
     
-    
-    public boolean isInt(String input) {
+    boolean isInt(String input) {
         if (input.isEmpty()) {
             return false;
         }
@@ -37,22 +43,23 @@ public class Soylent {
     }
    
     
-    Scanner in = new Scanner(System.in);
-    PrintStream out;
+    Scanner in = null;
+    PrintStream out = null;
     
-    int cases;
-    int[] drinks;
+    int cases = 0;
+    String input = " ";
+    int[] drinks = null;
     
-    public void readTestCases(String _cases) {
-        if (isInt(_cases)) {
-            cases = Integer.parseInt(_cases);
+    public void readTestCases() {
+        input = in.nextLine();
+        if (isInt(input)) {
+            cases = Integer.parseInt(input);
             if (cases < 0) {
             cases = cases*(-1);
             }
             drinks = new int[cases];
-            in.nextLine();
             for (int i = 0; i < drinks.length; i++) {
-                String input = in.nextLine();
+                input = in.nextLine();
                 if (isInt(input)) {
                     drinks[i] = Integer.parseInt(input);
                 } else {
@@ -64,17 +71,18 @@ public class Soylent {
     
     void solve() {
         for (int i = 0; i < drinks.length; i++) {
-            if (drinks[i]%400 >= 100) {
-                drinks[i] = (drinks[i]/400) + 1;
-            } else {
+            //if (drinks[i]%400 >= 100) {
+            //    drinks[i] = (drinks[i]/400) + 1;
+            //} else {
                 drinks[i] = (drinks[i]/400);
-            }
+            //}
         } 
     }
     
     void write() {
         for (int i = 0; i < drinks.length; i++) {
-            System.out.println(drinks[i]);
+            //String numdrinks = Integer.toString(drinks[i]);
+            out.println(drinks[i]);
         }
     }    
     

@@ -21,22 +21,22 @@ import static org.junit.Assert.*;
  * @author jrmathson
  */
 public class SoylentTest {
-    
+
     public SoylentTest() {
     }
-    
+
     @BeforeClass
     public static void setUpClass() {
     }
-    
+
     @AfterClass
     public static void tearDownClass() {
     }
-    
+
     @Before
     public void setUp() {
     }
-    
+
     @After
     public void tearDown() {
     }
@@ -57,9 +57,9 @@ public class SoylentTest {
         assertEquals(5, instance.drinks[1]);
     }
 
-    
     /**
      * Test of solve method, of class Soylent.
+     *
      * @throws java.lang.Exception
      */
     @Test
@@ -74,7 +74,7 @@ public class SoylentTest {
         assertEquals(7, instance.drinks[0]);
         assertEquals(5, instance.drinks[1]);
     }
-    
+
     @Test
     public void testCorrectCase2() throws Exception {
         Soylent instance = new Soylent();
@@ -99,14 +99,14 @@ public class SoylentTest {
         assertTrue(instance.isInt("2400"));
         assertFalse(instance.isInt("hola"));
     }
-    
+
     @Test
     public void testErrors2() throws Exception {
         Soylent instance = new Soylent();
         assertFalse(instance.isInt(" "));
         assertFalse(instance.isInt("hola"));
     }
-    
+
     @Test
     public void testExample1() throws Exception {
         InputStream saveIn = System.in;
@@ -123,27 +123,27 @@ public class SoylentTest {
         }
         assertEquals(out.toString(),
                 "5" + System.lineSeparator()
-                + "4");
+                + "4" + System.lineSeparator());
     }
-    /*
+    
+    
     @Test
     public void testMixedCase1() throws Exception {
-        Soylent instance = new Soylent();
-       
-        if (instance.isInt(input)) {
-                assertTrue(instance.isInt(input[j]));
-                }
-        int i = 0;
-        instance.drinks[i++] = "2020";
-        input[i++] = " ";
-        input[i++] = "2200";
-        input[i++] = "buenos dias";
-        input[i++] = "2450";
-        for (int j = 0; j < i; ++j) {
-            if (instance.isInt(input[j])) {
-                assertTrue(instance.isInt(input[j]));
-                }
+        InputStream saveIn = System.in;
+        PrintStream saveOut = System.out;
+        ByteArrayOutputStream out = new ByteArrayOutputStream();
+        PrintStream ps = new PrintStream(out);
+        try {  // Changes the input to FileInputStream
+            System.setIn(new FileInputStream("soylent.in.2"));
+            System.setOut(ps);
+            Soylent.main(null);
+        } finally {  // Restores the input 
+            System.setIn(saveIn);
+            System.setOut(saveOut);
         }
+        assertEquals(out.toString(),
+                "6" + System.lineSeparator()
+                + "5" + System.lineSeparator() 
+                + "7" + System.lineSeparator());
     }
-    */
 }
