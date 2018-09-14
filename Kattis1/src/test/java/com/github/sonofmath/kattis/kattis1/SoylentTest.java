@@ -71,7 +71,7 @@ public class SoylentTest {
         instance.drinks[0] = 2543;
         instance.drinks[1] = 1953;
         instance.solve();
-        assertEquals(7, instance.drinks[0]);
+        assertEquals(6, instance.drinks[0]);
         assertEquals(5, instance.drinks[1]);
     }
 
@@ -85,7 +85,7 @@ public class SoylentTest {
         instance.drinks[i++] = 2020;
         instance.drinks[i++] = 2200;
         instance.drinks[i++] = 2450;
-        instance.drinks[i++] = 2500;
+        instance.drinks[i++] = 2700;
         instance.solve();
         assertEquals(5, instance.drinks[0]);
         assertEquals(6, instance.drinks[1]);

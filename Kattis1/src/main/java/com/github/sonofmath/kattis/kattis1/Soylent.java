@@ -71,11 +71,11 @@ public class Soylent {
     
     void solve() {
         for (int i = 0; i < drinks.length; i++) {
-            //if (drinks[i]%400 >= 100) {
-            //    drinks[i] = (drinks[i]/400) + 1;
-            //} else {
+            if (drinks[i]%400 >= 200) {
+                drinks[i] = (drinks[i]/400) + 1;
+            } else {
                 drinks[i] = (drinks[i]/400);
-            //}
+            }
         } 
     }
     
