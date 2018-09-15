@@ -50,11 +50,10 @@ public class SoylentTest {
         Soylent instance = new Soylent();
         instance.drinks = new int[2];
         instance.drinks[0] = 2600;
-        int i = 2050;
-        instance.drinks[1] = i;
+        instance.drinks[1] = 2399;
         instance.solve();
         assertEquals(7, instance.drinks[0]);
-        assertEquals(5, instance.drinks[1]);
+        assertEquals(6, instance.drinks[1]);
     }
 
     /**
@@ -71,7 +70,7 @@ public class SoylentTest {
         instance.drinks[0] = 2543;
         instance.drinks[1] = 1953;
         instance.solve();
-        assertEquals(6, instance.drinks[0]);
+        assertEquals(7, instance.drinks[0]);
         assertEquals(5, instance.drinks[1]);
     }
 
@@ -83,14 +82,14 @@ public class SoylentTest {
         instance.drinks = new int[instance.cases];
         int i = 0;
         instance.drinks[i++] = 2020;
-        instance.drinks[i++] = 2200;
+        instance.drinks[i++] = 1999;
         instance.drinks[i++] = 2450;
-        instance.drinks[i++] = 2700;
+        instance.drinks[i++] = 2001;
         instance.solve();
-        assertEquals(5, instance.drinks[0]);
-        assertEquals(6, instance.drinks[1]);
-        assertEquals(6, instance.drinks[2]);
-        assertEquals(7, instance.drinks[3]);
+        assertEquals(6, instance.drinks[0]);
+        assertEquals(5, instance.drinks[1]);
+        assertEquals(7, instance.drinks[2]);
+        assertEquals(6, instance.drinks[3]);
     }
 
     @Test
@@ -143,7 +142,7 @@ public class SoylentTest {
         }
         assertEquals(out.toString(),
                 "6" + System.lineSeparator()
-                + "5" + System.lineSeparator() 
+                + "6" + System.lineSeparator() 
                 + "7" + System.lineSeparator());
     }
 }
