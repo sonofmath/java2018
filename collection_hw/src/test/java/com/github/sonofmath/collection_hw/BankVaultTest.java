@@ -43,12 +43,11 @@ public class BankVaultTest {
     @Test
     public void testAddItem() {
         System.out.println("addItem");
-        String name = "";
-        int valueInDollars = 0;
+        String name = "Cash";
+        int valueInDollars = 500;
         BankVault instance = new BankVault();
         instance.addItem(name, valueInDollars);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        instance.hasItemByName(name);
     }
     
 }

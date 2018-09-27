@@ -15,5 +15,9 @@ public class BankVault {
     void addItem(String name, int valueInDollars) {
         valuables.add(new Item("Cash", 500));
     }
+
+    boolean hasItemByName(String name) {
+        return valuables.hasItemByName(name);
+    }
     
 }

@@ -12,5 +12,12 @@ import java.util.LinkedList;
  * @author jrmathson
  */
 public class Valuables extends LinkedList <Item> {
+
+    boolean hasItemByName(String name) {
+        for (Item item : this) {
+            if (item.name.equals(name)) return true;
+        }
+        return false;
+    }
     
 }
