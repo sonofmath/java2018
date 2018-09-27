@@ -14,7 +14,7 @@ import static org.junit.Assert.*;
 
 /**
  *
- * @author sonof
+ * @author jrmathson
  */
 public class BankVaultTest {
     
@@ -50,4 +50,9 @@ public class BankVaultTest {
         instance.hasItemByName(name);
     }
     
+    @Test
+    public void testBanking() {
+        BankVault vault = new BankVault();
+        Customer bill = new Customer("bill", 600);
+    }
 }
