@@ -9,7 +9,7 @@ package com.github.sonofmath.collections;
  *
  * @author jrmathson
  */
-public class Customer {
+public class Customer implements Comparable < Customer > {
 
     int orderNumber;
     String name;
@@ -25,4 +25,19 @@ public class Customer {
     }
 
     Items items = new Items();
+
+    @Override
+    public int compareTo(Customer o) {
+        return name.compareTo(o.name);
+    }
+    
+    @Override
+    public boolean equals(Object o) {
+        if (o instanceof Customer) {
+            return name.equals(((Customer) o).name);
+        } else {
+            throw new ClassCastException("unsupported type");
+        }
+        
+    }
 }

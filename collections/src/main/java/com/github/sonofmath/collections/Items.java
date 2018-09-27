@@ -28,4 +28,12 @@ class Items extends LinkedList<Item> {
         }
         return sum;
     }
+    
+    LinkedList<Integer> getPrices() {
+        LinkedList<Integer> ans = new LinkedList<Integer>();
+        for (Item item : this) {
+            ans.add(item.priceInCents);
+        }
+        return ans;
+    }
 }

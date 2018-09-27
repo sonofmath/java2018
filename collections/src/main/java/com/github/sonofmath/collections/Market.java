@@ -10,6 +10,7 @@ package com.github.sonofmath.collections;
  * @author jrmathson
  */
 public class Market {
+    Customers customers = new Customers();
     Items items = new Items();
 //    Registers registers;
 //    Customers customers;
