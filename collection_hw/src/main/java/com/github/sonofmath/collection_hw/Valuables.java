@@ -5,15 +5,12 @@
  */
 package com.github.sonofmath.collection_hw;
 
+import java.util.LinkedList;
+
 /**
  *
  * @author jrmathson
  */
-public class BankVault {
-    Valuables valuables = new Valuables();
-
-    void addItem(String name, int valueInDollars) {
-        valuables.add(new Item("Cash", 500));
-    }
+public class Valuables extends LinkedList <Item> {
     
 }
