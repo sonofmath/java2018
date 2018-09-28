@@ -53,6 +53,8 @@ public class BankVaultTest {
     @Test
     public void testBanking() {
         BankVault vault = new BankVault();
-        Customer bill = new Customer("bill", 600);
+        Customer bill = new Customer("bill", 3030, 1600);
+        
+        SafeDepositBox depositbox = new SafeDepositBox(3030, 27000);
     }
 }

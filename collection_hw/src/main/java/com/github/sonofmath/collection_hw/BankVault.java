@@ -10,6 +10,7 @@ package com.github.sonofmath.collection_hw;
  * @author jrmathson
  */
 public class BankVault {
+    Customers customers = new Customers();
     Valuables valuables = new Valuables();
 
     void addItem(String name, int valueInDollars) {

@@ -9,14 +9,11 @@ package com.github.sonofmath.collection_hw;
  *
  * @author jrmathson
  */
-class Customer {
+class SafeDepositBox {
     int accountNumber;
-    String name;
-    int valueInDollars;
-    
-    Customer(String _name, int _accountNumber, int _valueInDollars) {
-        name = _name;
+    int currentValue;
+    SafeDepositBox(int _accountNumber, int _currentValue) {
         accountNumber = _accountNumber;
-        valueInDollars = _valueInDollars;
-    }    
+        currentValue = _currentValue;
+    }      
 }
