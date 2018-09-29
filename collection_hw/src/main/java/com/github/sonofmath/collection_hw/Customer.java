@@ -10,6 +10,7 @@ package com.github.sonofmath.collection_hw;
  * @author jrmathson
  */
 class Customer {
+    SafeDepositBox depositbox = new SafeDepositBox();
     int accountNumber;
     String name;
     int valueInDollars;
@@ -18,5 +19,18 @@ class Customer {
         name = _name;
         accountNumber = _accountNumber;
         valueInDollars = _valueInDollars;
-    }    
+    }
+
+    void unlock(int _accountNumber) {
+        if (_accountNumber == accountNumber) {
+            SafeDepositBox.isLocked = false;
+        }
+    }
+
+    void addValuables(String name, int valueInDollars) {
+        
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    
 }

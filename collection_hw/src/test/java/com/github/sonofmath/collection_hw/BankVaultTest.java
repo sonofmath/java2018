@@ -56,5 +56,7 @@ public class BankVaultTest {
         Customer bill = new Customer("bill", 3030, 1600);
         
         SafeDepositBox depositbox = new SafeDepositBox(3030, 27000);
+        bill.unlock(3030);
+        bill.addValuables("Money", 1600);
     }
 }
