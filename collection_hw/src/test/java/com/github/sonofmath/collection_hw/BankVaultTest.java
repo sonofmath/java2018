@@ -53,10 +53,13 @@ public class BankVaultTest {
     @Test
     public void testBanking() {
         BankVault vault = new BankVault();
-        Customer bill = new Customer("bill", 3030, 1600);
-        
-        SafeDepositBox depositbox = new SafeDepositBox(3030, 27000);
-        bill.unlock(3030);
-        bill.addValuables("Money", 1600);
+        Customer bill = new Customer("bill", 1600);
+        vault.customers.add(bill);
+        bill.addItem("money", 1600);
+        //bill.hasItemByName("money");
+        assertTrue(bill.hasItemByName("money"));
+        //SafeDepositBox depositbox = vault.getDepositBoxFor(bill);
+        //depositbox.addItem("money", 1600);
+        //assertTrue(depositbox.hasItemByName("money"));
     }
 }

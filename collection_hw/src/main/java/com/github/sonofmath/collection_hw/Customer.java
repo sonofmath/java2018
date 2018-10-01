@@ -9,28 +9,36 @@ package com.github.sonofmath.collection_hw;
  *
  * @author jrmathson
  */
-class Customer {
-    SafeDepositBox depositbox = new SafeDepositBox();
-    int accountNumber;
+public class Customer implements Comparable < Customer > {
     String name;
     int valueInDollars;
+    Valuables valuables = new Valuables();
     
-    Customer(String _name, int _accountNumber, int _valueInDollars) {
+    Customer(String _name, int _valueInDollars) {
         name = _name;
-        accountNumber = _accountNumber;
         valueInDollars = _valueInDollars;
     }
-
-    void unlock(int _accountNumber) {
-        if (_accountNumber == accountNumber) {
-            SafeDepositBox.isLocked = false;
-        }
-    }
-
-    void addValuables(String name, int valueInDollars) {
-        
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
     
+    void addItem(String _name, int _valueInDollars) {
+        valuables.add(new Item(_name, _valueInDollars));
+    }
+
+    boolean hasItemByName(String name) {
+        return valuables.hasItemByName(name);
+    }
+    
+    @Override
+    public int compareTo(Customer o) {
+        return name.compareTo(o.name);
+    }
+    
+    @Override
+    public boolean equals(Object o) {
+        if (o instanceof Customer) {
+            return name.equals(((Customer) o).name);
+        } else {
+            throw new ClassCastException("unsupported type");
+        }
+        
+    }
 }
