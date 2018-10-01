@@ -25,9 +25,15 @@ class SafeDepositBox {
     SafeDepositBox() {
     }
 
-    void addItem(String name, int value) {
-        for (Item cutomersItem : customer.valuables)
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    void addItem(String name) {
+        for (Item customerItem : customer.valuables) {
+            if (customerItem.name.equals(name)) {
+                valuables.add(customerItem);
+                customer.valuables.remove(customerItem);
+                return;
+            }
+        }
+        throw new IllegalStateException(customer + " does not have any items called " + name);
     }
 
     boolean hasItemByName(String name) {

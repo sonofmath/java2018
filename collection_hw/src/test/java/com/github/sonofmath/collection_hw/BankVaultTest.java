@@ -56,10 +56,9 @@ public class BankVaultTest {
         Customer bill = new Customer("bill", 1600);
         vault.customers.add(bill);
         bill.addItem("money", 1600);
-        //bill.hasItemByName("money");
         assertTrue(bill.hasItemByName("money"));
-        //SafeDepositBox depositbox = vault.getDepositBoxFor(bill);
-        //depositbox.addItem("money", 1600);
-        //assertTrue(depositbox.hasItemByName("money"));
+        SafeDepositBox depositbox = vault.getDepositBoxFor(bill);
+        depositbox.addItem("money");
+        assertTrue(depositbox.hasItemByName("money"));
     }
 }
