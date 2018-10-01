@@ -40,4 +40,12 @@ class SafeDepositBox {
         return valuables.hasItemByName(name);
     }
 
+    void lock() {
+        if (customer.valueInDollars >= 0) {
+            customer.valueInDollars -= valuables.totalValueInDollars();
+        } else {
+            throw new IllegalStateException("cutomer does not have enough money");
+        }
+    }
+
 }

@@ -21,6 +21,7 @@ public class Customer implements Comparable < Customer > {
     
     void addItem(String _name, int _valueInDollars) {
         valuables.add(new Item(_name, _valueInDollars));
+        this.valueInDollars += _valueInDollars;
     }
 
     boolean hasItemByName(String name) {
