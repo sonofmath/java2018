@@ -20,4 +20,11 @@ public class Valuables extends LinkedList <Item> {
         return false;
     }
     
+    int totalValueInDollars() {
+        int sum = 0;
+        for (Item item : this) {
+            sum += item.valueInDollars;
+        }
+        return sum;
+    }
 }

@@ -5,18 +5,12 @@
  */
 package com.github.sonofmath.collection_hw;
 
+import java.util.TreeSet;
+
 /**
  *
  * @author jrmathson
  */
-class Customer {
-    int acctNumber;
-    String name;
-    int valueInDollars;
-    
-    Customer(String _name, int _valueInDollars) {
-        name = _name;
-        valueInDollars = _valueInDollars;
-    }
+public class Customers extends TreeSet <Customer> {
     
 }
