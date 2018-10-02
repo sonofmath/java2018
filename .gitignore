@@ -10,3 +10,8 @@ buildNumber.properties
 
 # Avoid ignoring Maven wrapper jar file (.jar files are usually ignored)
 !/.mvn/wrapper/maven-wrapper.jar
+/hello/nbproject/
+/countingstars/nbproject/
+/Kattis1/nbproject/
+/collections/nbproject/
+/collection_hw/nbproject/
