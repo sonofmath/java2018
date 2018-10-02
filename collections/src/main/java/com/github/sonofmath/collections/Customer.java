@@ -10,7 +10,6 @@ package com.github.sonofmath.collections;
  * @author jrmathson
  */
 public class Customer implements Comparable < Customer > {
-
     int orderNumber;
     String name;
     int moneyInCents;
