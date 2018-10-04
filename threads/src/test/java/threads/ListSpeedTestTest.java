@@ -14,7 +14,7 @@ import static org.junit.Assert.*;
 
 /**
  *
- * @author jemathson
+ * @author jrmathson
  */
 public class ListSpeedTestTest {
     
@@ -39,17 +39,18 @@ public class ListSpeedTestTest {
 
     @Test
     public void testSomeMethod() {
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
     }
     
     @Test
     public void testCOllectionsSortSpeed() {
         ListSpeedTest test = new ListSpeedTest();
-        test.setAction(new ListSorter());
+        test.setAction(new SortAction());
         test.start();
-        test.waitTilFinish();
-        
+        test.waitTilFinish(); 
+        String result = test.outcome();
+        System.out.println("array time = " + test.arrayWorker.millisec);
+        System.out.println("linked time = " + test.linkedWorker.millisec);
+        assertTrue(result.startsWith("array"));
     }
     
 }

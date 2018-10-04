@@ -5,13 +5,17 @@
  */
 package threads;
 
+import java.util.List;
+
 /**
  *
- * @author sonof
+ * @author jrmathson
  */
-public class ListSorter {
+public class SortAction implements Action {
 
-    public ListSorter() {
+    @Override
+    public void actOn(List list) {
+        list.sort(null);
     }
     
 }
