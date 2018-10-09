@@ -71,4 +71,25 @@ public class BankVaultTest {
         assertEquals(depositbox.getCurrentValue(), 3600);
     }
 
+    /**
+     * Test of getCurrentValue method, of class SafeDepositBox.
+     */
+    @Test
+    public void testGetCurrentValue() {
+        System.out.println("getCurrentValue");
+        BankVault vault = new BankVault();
+        SafeDepositBox instance = new SafeDepositBox();
+        Customer customer = new Customer("dave", 0);
+        vault.customers.add(customer);
+        customer.addItem("gold", 5000);
+        assertTrue(customer.hasItemByName("gold"));
+        instance = vault.getDepositBoxFor(customer);
+        int expResult = 0;
+        int result = instance.getCurrentValue();
+        assertEquals(expResult, result);
+        
+        instance.addItem("gold");
+        assertTrue(instance.hasItemByName("gold"));
+        assertEquals(5000, instance.getCurrentValue());
+    }
 }
