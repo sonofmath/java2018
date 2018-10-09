@@ -10,7 +10,6 @@ package com.github.sonofmath.collection_hw;
  * @author jrmathson
  */
 class SafeDepositBox {
-    int accountNumber;
     int currentValue;
     
     BankVault vault;
@@ -24,12 +23,18 @@ class SafeDepositBox {
 
     SafeDepositBox() {
     }
+    
+    int getCurrentValue() {
+        return currentValue;
+    }
 
     void addItem(String name) {
         for (Item customerItem : customer.valuables) {
             if (customerItem.name.equals(name)) {
                 valuables.add(customerItem);
+                currentValue += customerItem.valueInDollars;
                 customer.valuables.remove(customerItem);
+                customer.valueInDollars -= valuables.totalValueInDollars();
                 return;
             }
         }
@@ -39,13 +44,4 @@ class SafeDepositBox {
     boolean hasItemByName(String name) {
         return valuables.hasItemByName(name);
     }
-
-    void lock() {
-        if (customer.valueInDollars >= 0) {
-            customer.valueInDollars -= valuables.totalValueInDollars();
-        } else {
-            throw new IllegalStateException("cutomer does not have enough money");
-        }
-    }
-
 }

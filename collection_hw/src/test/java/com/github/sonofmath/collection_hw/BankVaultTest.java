@@ -64,7 +64,11 @@ public class BankVaultTest {
         assertTrue(depositbox.hasItemByName("money"));
         assertFalse(bill.hasItemByName("money"));
         
-        depositbox.lock();
         assertEquals(bill.valueInDollars, 3600-1600);
+        
+        depositbox.addItem("jewelry");
+        assertFalse(bill.hasItemByName("jewelry"));
+        assertEquals(depositbox.getCurrentValue(), 3600);
     }
+
 }
