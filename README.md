@@ -1,8 +1,8 @@
 # java2018
 
-## Kattis Problem - Soylent
+-## Kattis Problem - Soylent
 Solution - https://github.com/sonofmath/java2018/tree/master/Kattis1
   -- nice work!
   
-## Collections HW - Bank Vault
+-## Collections HW - Bank Vault
 https://github.com/sonofmath/java2018/tree/master/collection_hw
