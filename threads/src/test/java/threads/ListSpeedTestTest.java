@@ -42,7 +42,7 @@ public class ListSpeedTestTest {
     }
     
     @Test
-    public void testCOllectionsSortSpeed() {
+    public void testCollectionsSortSpeed() {
         ListSpeedTest test = new ListSpeedTest();
         test.setAction(new SortAction());
         test.start();
@@ -53,4 +53,42 @@ public class ListSpeedTestTest {
         assertTrue(result.startsWith("array"));
     }
     
+    @Test
+    public void testCollectionsSortSerialSpeed() {
+        ListSpeedTest test = new ListSpeedTest(
+                new SerializedAction(new SortAction()),
+                        1_000_000);
+        test.setAction(new SerializedAction(new SortAction()));
+        test.start();
+        test.waitTilFinish(); 
+        String result = test.outcome();
+        System.out.println("array time = " + test.arrayWorker.millisec);
+        System.out.println("linked time = " + test.linkedWorker.millisec);
+        assertTrue(result.startsWith("array"));
+    }
+    
+    @Test
+    public void testCollectionsRandomizedAction() {
+        ListSpeedTest test = new ListSpeedTest();
+        test.setAction(new RandomizeAction(1_000_000));
+        test.start();
+        test.waitTilFinish(); 
+        String result = test.outcome();
+        System.out.println("array time = " + test.arrayWorker.millisec);
+        System.out.println("linked time = " + test.linkedWorker.millisec);
+        assertTrue(result.startsWith("array"));
+    }
+    
+    @Test
+    public void testCollectionsLambda() {
+        ListSpeedTest test = new ListSpeedTest();
+        // Lambda notation  type->type.get(type.size());
+        test.setAction((list)->{ list.get(list.size()/2); });
+        test.start();
+        test.waitTilFinish(); 
+        String result = test.outcome();
+        System.out.println("array time = " + test.arrayWorker.millisec);
+        System.out.println("linked time = " + test.linkedWorker.millisec);
+        assertTrue(result.startsWith("array"));
+    }
 }
