@@ -7,7 +7,8 @@ Solution - https://github.com/sonofmath/java2018/tree/master/Kattis1
 ## Collections HW - Bank Vault
 https://github.com/sonofmath/java2018/tree/master/collection_hw
 ```
-Created a Bank Vault with Customers and Safe Deposit Boxes that they can add items to.
-
-<img src="collection_hw/PassesTests.PNG">
+Created a Bank Vault with Customers and Safe Deposit Boxes that they can add items to.  
 ```
+
+<img align="center" src="collection_hw/PassesTests.PNG">
+
