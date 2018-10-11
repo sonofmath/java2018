@@ -12,4 +12,6 @@ package sonofmath.thread_hw;
 public class OurJavaClass {
     Instructor drmacevoy = new Instructor();
     Students student = new Students();
+    
+    
 }

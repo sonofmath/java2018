@@ -10,6 +10,6 @@ package sonofmath.thread_hw;
  * @author jrmathson
  */
 class Instructor {
-    Speaks speaks;
+    Speaker speaks;
     
 }

@@ -11,6 +11,6 @@ import java.util.List;
  *
  * @author jrmathson
  */
-public interface Speaks {
+public interface Speaker {
     void actOn(List list);
 }
