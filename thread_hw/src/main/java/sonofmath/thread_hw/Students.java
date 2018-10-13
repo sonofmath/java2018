@@ -7,7 +7,7 @@ package sonofmath.thread_hw;
 
 /**
  *
- * @author sonof
+ * @author jrmathson
  */
 class Students {
     
