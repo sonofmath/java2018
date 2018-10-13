@@ -9,7 +9,7 @@ package sonofmath.thread_hw;
  *
  * @author jrmathson
  */
-class Instructor {
-    Speaks speaks;
-    
+class Instructor extends Thread {
+    Thread thread = new Thread(this);
+    public void start() { thread.start(); }
 }

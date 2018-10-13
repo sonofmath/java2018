@@ -12,16 +12,23 @@ import java.util.LinkedList;
  * @author jrmathson
  */
 public class OurClass {
-    LinkedList<String> students = new LinkedList<String>();
-    Speaks speaks;
+    LinkedList<String> linkedlist = new LinkedList<String>();
+    Action action;
     int size;
     
-    OurClass(Speaks _speaks, int _size) {
-        speaks = _speaks;
+    OurClass(Action _action, int _size) {
+        action = _action;
         size = _size;
     }
     
-    TestStudent student;
-    Instructor drmacevoy = new Instructor();
+    TestStudent students;
+    Instructor drmacevoy;
+    
+    void start() {
+        drmacevoy = new Instructor();
+        students = new TestStudent(linkedlist, action);
+        drmacevoy.start();
+    }
+    
     }
 

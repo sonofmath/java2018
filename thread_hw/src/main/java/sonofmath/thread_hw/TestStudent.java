@@ -12,12 +12,12 @@ import java.util.List;
  * @author jrmathson
  */
 public class TestStudent implements Runnable {
-    Speaks speaks;
+    Action action;
     Thread thread = new Thread(this);
     List list;
     
-    TestStudent(List _list, Speaks _speaks) {
-        speaks = _speaks;
+    TestStudent(List _list, Action _action) {
+        action = action;
         list = _list;
     }
     
@@ -25,7 +25,7 @@ public class TestStudent implements Runnable {
     
     @Override
     public void run() {
-        
+        System.out.println("Running ");
     }
     
 }

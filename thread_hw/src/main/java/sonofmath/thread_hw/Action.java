@@ -5,10 +5,12 @@
  */
 package sonofmath.thread_hw;
 
+import java.util.List;
+
 /**
  *
  * @author jrmathson
  */
-class Students {
-    
+public interface Action {
+    void actOn(List list);
 }

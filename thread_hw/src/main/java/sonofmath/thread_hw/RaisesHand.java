@@ -6,11 +6,23 @@
 package sonofmath.thread_hw;
 
 import java.util.List;
+import java.util.Random;
 
 /**
  *
  * @author jrmathson
  */
-public interface Speaks {
-    void actOn(List list);
+public class RaisesHand implements Action {
+    
+    RaisesHand() {
+    }
+    
+    Random rand = new Random();
+    
+    
+
+    @Override
+    public void actOn(List list) {
+        
+    }
 }
