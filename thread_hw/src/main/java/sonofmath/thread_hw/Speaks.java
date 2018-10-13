@@ -5,13 +5,12 @@
  */
 package sonofmath.thread_hw;
 
+import java.util.List;
+
 /**
  *
  * @author jrmathson
  */
-public class OurJavaClass {
-    Instructor drmacevoy = new Instructor();
-    Students student = new Students();
-    
-    
+public interface Speaks {
+    void actOn(List list);
 }
