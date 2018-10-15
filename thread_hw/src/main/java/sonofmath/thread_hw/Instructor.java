@@ -10,19 +10,26 @@ package sonofmath.thread_hw;
  * @author jrmathson
  */
 class Instructor extends Thread {
+    String name;
     Thread thread = new Thread(this);
+    
+    Instructor(String _name) {
+        name = _name;
+    }
     
     public void start() { thread.start(); }
     
     @Override
     public void run() {
-        System.out.println(Thread.currentThread().getName() + " is lecturing.");
+        System.out.println(this.name + " is lecturing.");
         try {
-            System.out.println(Thread.currentThread().getName() + " is lecturing.");
-            Thread.sleep(10000);
+            for(int i = 5; i >= 0; --i) {
+                System.out.println(this.name + " is lecturing.");
+                Thread.sleep(2000);
+            }
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
-        System.out.println(Thread.currentThread().getName() + " has stopped lecturing");
+        System.out.println(this.name + " has stopped lecturing. class is over.");
     }
 }

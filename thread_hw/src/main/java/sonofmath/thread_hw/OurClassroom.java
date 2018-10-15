@@ -28,12 +28,12 @@ public class OurClassroom {
         size = DEFAULT_SIZE;
     }
     
-    TestStudent students;
+    Students students;
     Instructor drmacevoy;
     
     void start() {
-        drmacevoy = new Instructor();
-        students = new TestStudent(linkedlist, action);
+        drmacevoy = new Instructor("drmacevoy");
+        students = new Students(linkedlist, action);
         drmacevoy.start();
         students.start();
     }

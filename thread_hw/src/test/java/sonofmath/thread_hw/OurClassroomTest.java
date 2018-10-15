@@ -51,7 +51,7 @@ public class OurClassroomTest {
     
     @Test
     public void testClassroom() {
-        OurClassroom thisclass = new OurClassroom();
+        OurClassroom thisclass = new OurClassroom(new RaisesHand(),20);
         thisclass.start();
         
     }
