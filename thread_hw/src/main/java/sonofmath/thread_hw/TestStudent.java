@@ -25,7 +25,7 @@ public class TestStudent implements Runnable {
     
     @Override
     public void run() {
-        System.out.println("Running ");
+        System.out.println("Student is asking a question");
     }
     
 }

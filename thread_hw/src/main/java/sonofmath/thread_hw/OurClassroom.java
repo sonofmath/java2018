@@ -11,14 +11,21 @@ import java.util.LinkedList;
  *
  * @author jrmathson
  */
-public class OurClass {
+public class OurClassroom {
     LinkedList<String> linkedlist = new LinkedList<String>();
     Action action;
     int size;
     
-    OurClass(Action _action, int _size) {
+    OurClassroom(Action _action, int _size) {
         action = _action;
         size = _size;
+    }
+    
+    public static final int DEFAULT_SIZE = 30;
+    
+    OurClassroom() {
+        action = null;
+        size = DEFAULT_SIZE;
     }
     
     TestStudent students;
@@ -28,6 +35,7 @@ public class OurClass {
         drmacevoy = new Instructor();
         students = new TestStudent(linkedlist, action);
         drmacevoy.start();
+        students.start();
     }
     
     }
