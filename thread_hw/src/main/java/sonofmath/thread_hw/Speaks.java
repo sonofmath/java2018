@@ -5,12 +5,18 @@
  */
 package sonofmath.thread_hw;
 
-import java.util.List;
 
 /**
  *
  * @author jrmathson
  */
-public interface Action {
-    void actOn(List list);
+public class Speaks{
+    String message;
+    
+    Speaks(String _message) {
+        message = _message;
+    }
+    void says() {
+        System.out.println(message);
+    }
 }

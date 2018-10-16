@@ -11,7 +11,7 @@ package sonofmath.thread_hw;
  */
 public class Main {
     public static void main(String[] args) {
-        OurClassroom java2018 = new OurClassroom();
+        OurClassroom java2018 = new OurClassroom(25,15);
         java2018.start();
     }
 }

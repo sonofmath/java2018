@@ -4,39 +4,37 @@
  * and open the template in the editor.
  */
 package sonofmath.thread_hw;
-
-import java.util.LinkedList;
-
 /**
  *
  * @author jrmathson
  */
 public class OurClassroom {
-    LinkedList<String> linkedlist = new LinkedList<String>();
-    Action action;
-    int size;
+    int classsize;
+    Students students[] = new Students[classsize];
+    public static int classlength;
+    long start;
     
-    OurClassroom(Action _action, int _size) {
-        action = _action;
-        size = _size;
+    OurClassroom(int _size, int _classlength) {
+        classsize = _size;
+        classlength = _classlength;
     }
     
-    public static final int DEFAULT_SIZE = 30;
-    
-    OurClassroom() {
-        action = null;
-        size = DEFAULT_SIZE;
+    boolean isIn() {
+        if((System.currentTimeMillis() - start) < classlength) {
+            return true;
+        } else {
+            return false;
+        }
     }
     
-    Students students;
+    Students student;
     Instructor drmacevoy;
     
     void start() {
-        drmacevoy = new Instructor("drmacevoy");
-        students = new Students(linkedlist, action);
+        start = System.currentTimeMillis();
+        drmacevoy = new Instructor("Dr Macevoy");
         drmacevoy.start();
-        students.start();
+        student.start();
     }
-    
-    }
+}
 

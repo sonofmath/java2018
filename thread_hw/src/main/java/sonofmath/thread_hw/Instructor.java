@@ -9,9 +9,10 @@ package sonofmath.thread_hw;
  *
  * @author jrmathson
  */
-class Instructor extends Thread {
+class Instructor implements Runnable {
     String name;
     Thread thread = new Thread(this);
+    OurClassroom ourclass;
     
     Instructor(String _name) {
         name = _name;
@@ -21,15 +22,17 @@ class Instructor extends Thread {
     
     @Override
     public void run() {
-        System.out.println(this.name + " is lecturing.");
         try {
-            for(int i = 5; i >= 0; --i) {
-                System.out.println(this.name + " is lecturing.");
+            String message = this.name + " is lecturing";
+            Speaks speaker = new Speaks(message);
+            while(ourclass.isIn()) {
+                speaker.says();
                 Thread.sleep(2000);
             }
+            
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
-        System.out.println(this.name + " has stopped lecturing. class is over.");
+        System.out.println(this.name + " has stopped lecturing. Class is over.");
     }
 }

@@ -14,14 +14,10 @@ import java.util.logging.Logger;
  * @author jrmathson
  */
 public class Students implements Runnable {
-
-    Action action;
+    OurClassroom ourclass;
     Thread thread = new Thread(this);
-    List list;
-
-    Students(List _list, Action _action) {
-        action = action;
-        list = _list;
+   
+    Students() {
     }
 
     void start() {
@@ -30,14 +26,20 @@ public class Students implements Runnable {
 
     @Override
     public void run() {
-        for (int i = 0; i < 20; i++) {
-            try {
-                thread.sleep(500);
-                System.out.println("Student is asking a question");
-            } catch (InterruptedException ex) {
-                Logger.getLogger(Students.class.getName()).log(Level.SEVERE, null, ex);
+        try {
+            String message;
+            Speaks speaker;
+            while(ourclass.isIn()) {
+                message = "Student is asking a question";
+                speaker = new Speaks(message);
+                speaker.says();
+                Thread.sleep(2000);
             }
+            thread.sleep(800);
+            System.out.println("Student is asking a question");
+        } catch (InterruptedException ex) {
+            Logger.getLogger(Students.class.getName()).log(Level.SEVERE, null, ex);
         }
-    }
 
+    }
 }
