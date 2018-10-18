@@ -14,7 +14,7 @@ package com.github.sonofmath.sqlite;
 
 /**
  *
- * @author wmacevoy
+ * @author sonofmath
  */
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -36,7 +36,8 @@ public class DB {
     DB() { this(DEFAULT_URL); }
     DB(String url) { this.url = url; }
 
-
+    // If no one asks for connection it won't make one
+    // Thread Safe Lazy instantiation
     private Connection connection = null;
 
     public Connection getConnection() {
@@ -66,6 +67,7 @@ public class DB {
             }
         }
 
+        // PreparedStatement ha fill in the blanks
         PreparedStatement preparedStatement = preparedStatementCache.get(sql);
         if (preparedStatement == null) {
             synchronized (this) {
@@ -94,6 +96,7 @@ public class DB {
         try {
             PreparedStatement preparedStatement = getPreparedStatement(sql);
             int index = 1;
+            // Object... becomes an array of objects
             for (Object object : objects) {
                 if (object instanceof Boolean) {
                     preparedStatement.setBoolean(index, (Boolean) object);
@@ -142,6 +145,7 @@ public class DB {
 
     private Statement statement = null;
 
+    // Statement has ?
     public Statement getStatement() {
         if (statement == null) {
             synchronized (this) {
