@@ -10,31 +10,53 @@ package sonofmath.thread_hw;
  */
 public class OurClassroom {
     int classsize;
-    Students students[] = new Students[classsize];
-    public static int classlength;
-    long start;
+    int classlength;
+    long begin;
+    Speaks speaks;
+    Students students[];
     
     OurClassroom(int _size, int _classlength) {
         classsize = _size;
         classlength = _classlength;
+        speaks = new Speaks();
+        students = new Students[classsize];
+        for (int i = 0; i < students.length; ++i) {
+            String _name = "Student #" + i;
+            students[i] = new Students(this, speaks, _name);
+        }
+    }
+    
+    OurClassroom() {
+        classsize = 0;
+        classlength = 0;
+    }
+    
+    long getTimeInClass() {
+        return (System.currentTimeMillis() - begin);
     }
     
     boolean isIn() {
-        if((System.currentTimeMillis() - start) < classlength) {
+        if(getTimeInClass() < classlength) {
             return true;
         } else {
             return false;
         }
     }
     
-    Students student;
     Instructor drmacevoy;
     
     void start() {
-        start = System.currentTimeMillis();
-        drmacevoy = new Instructor("Dr Macevoy");
+        begin = System.currentTimeMillis();
+        drmacevoy = new Instructor("Dr Macevoy", this, speaks);
         drmacevoy.start();
-        student.start();
+        for (int i = 0; i < students.length; ++i) {
+            students[i].start();
+        }
+    }
+    
+    public static void main(String[] args) {
+        OurClassroom java2018 = new OurClassroom(25,10000);
+        java2018.start();
     }
 }
 

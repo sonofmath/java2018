@@ -5,7 +5,6 @@
  */
 package sonofmath.thread_hw;
 
-import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -14,31 +13,34 @@ import java.util.logging.Logger;
  * @author jrmathson
  */
 public class Students implements Runnable {
-    OurClassroom ourclass;
-    Thread thread = new Thread(this);
+    OurClassroom lecture;
+    Thread thread;
+    Speaks talks;
    
+    Students(OurClassroom _lecture, Speaks _talks, String name) {
+        lecture = _lecture;
+        talks = _talks;
+        thread = new Thread(this, name);
+    }
+    
     Students() {
+        lecture = null;
     }
 
-    void start() {
-        thread.start();
-    }
-
+    void start() { thread.start(); }
+    
     @Override
     public void run() {
-        try {
-            String message;
-            Speaks speaker;
-            while(ourclass.isIn()) {
-                message = "Student is asking a question";
-                speaker = new Speaks(message);
-                speaker.says();
-                Thread.sleep(2000);
+        String message = thread.getName() + " is asking a question";
+        while(lecture.isIn()) {
+            synchronized(talks) {
+                try {
+                    talks.says(message);
+                    Thread.sleep(100);
+                } catch (InterruptedException ex) {
+                    Logger.getLogger(Students.class.getName()).log(Level.SEVERE, null, ex);
+                }
             }
-            thread.sleep(800);
-            System.out.println("Student is asking a question");
-        } catch (InterruptedException ex) {
-            Logger.getLogger(Students.class.getName()).log(Level.SEVERE, null, ex);
         }
 
     }

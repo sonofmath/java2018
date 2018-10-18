@@ -10,26 +10,44 @@ package sonofmath.thread_hw;
  * @author jrmathson
  */
 class Instructor implements Runnable {
+
     String name;
-    Thread thread = new Thread(this);
-    OurClassroom ourclass;
-    
-    Instructor(String _name) {
+    Thread thread;
+    OurClassroom lecture;
+    Speaks talks;
+
+    Instructor(String _name, OurClassroom _lecture, Speaks _talks) {
         name = _name;
+        lecture = _lecture;
+        talks = _talks;
+        thread = new Thread(this);
+
     }
-    
-    public void start() { thread.start(); }
-    
+
+    Instructor() {
+        name = "";
+        thread = new Thread(this);
+    }
+
+    public void start() {
+        thread.start();
+    }
+
     @Override
     public void run() {
         try {
             String message = this.name + " is lecturing";
-            Speaks speaker = new Speaks(message);
-            while(ourclass.isIn()) {
-                speaker.says();
+            while (lecture.isIn()) {
+                int counter = 0;
+                synchronized (talks) {
+                    while (counter < 10) {
+                        counter++;
+                        talks.says(message);
+                        Thread.sleep(500);
+                    }
+                }
                 Thread.sleep(2000);
             }
-            
         } catch (InterruptedException e) {
             e.printStackTrace();
         }

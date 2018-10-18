@@ -54,7 +54,7 @@ public class OurClassroomTest {
     public void testIsIn() {
         System.out.println("isIn");
         OurClassroom instance = new OurClassroom(1,1000);
-        instance.start = System.currentTimeMillis();
+        instance.begin = System.currentTimeMillis();
         boolean expResult = true;
         boolean result = instance.isIn();
         assertEquals(expResult, result);

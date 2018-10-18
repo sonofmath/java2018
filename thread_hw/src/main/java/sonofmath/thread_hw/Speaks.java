@@ -11,12 +11,10 @@ package sonofmath.thread_hw;
  * @author jrmathson
  */
 public class Speaks{
-    String message;
-    
-    Speaks(String _message) {
-        message = _message;
+    Speaks() {
     }
-    void says() {
+    
+    void says(String message) {
         System.out.println(message);
     }
 }
