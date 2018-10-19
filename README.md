@@ -14,6 +14,6 @@ Created a Bank Vault with Customers and Safe Deposit Boxes that they can add ite
 
 ## Threads HW - Our Classroom
 https://github.com/sonofmath/java2018/tree/master/thread_hw
-'''
+```
 Created our class where speaking is the shared resource
-'''
+```
