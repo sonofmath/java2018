@@ -5,12 +5,25 @@
  */
 package sonofmath.thread_hw;
 
-import java.util.List;
 
 /**
  *
  * @author jrmathson
  */
-public interface Speaks {
-    void actOn(List list);
+public class Speaks{
+    OurClassroom lecture;
+    Speaks() {
+    }
+    
+    Speaks(OurClassroom _lecture) {
+        lecture = _lecture;
+    }
+    
+    void says(String message) throws InterruptedException {
+        if(lecture.isIn()) {
+            System.out.println(message);
+        } else {
+            System.out.println("Sorry class is over");
+        }
+    }
 }
