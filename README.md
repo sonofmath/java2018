@@ -17,3 +17,4 @@ https://github.com/sonofmath/java2018/tree/master/thread_hw
 ```
 Created our class where speaking is the shared resource
 ```
+<img src="thread_hw/Capture.PNG">
