@@ -21,12 +21,13 @@ class Instructor implements Runnable {
         lecture = _lecture;
         talks = _talks;
         thread = new Thread(this);
-
+        //thread.setPriority(6);
     }
 
     Instructor() {
         name = "";
         thread = new Thread(this);
+        //thread.setPriority(6);
     }
 
     public void start() {
@@ -37,19 +38,19 @@ class Instructor implements Runnable {
     public void run() {
         try {
             String message = this.name + " is lecturing";
+            thread.currentThread().setPriority(thread.MAX_PRIORITY);
             while (lecture.isIn()) {
                 int counter = 0;
                 synchronized (talks) {
-                    while (counter < 10) {
+                    while (counter < 5 ) {
                         counter++;
                         talks.says(message);
-                        Thread.sleep(500);
+                        Thread.sleep(200);
                     }
                 }
-                Thread.sleep(2000);
+                Thread.sleep(300);
             }
         } catch (InterruptedException e) {
-            e.printStackTrace();
         }
         System.out.println(this.name + " has stopped lecturing. Class is over.");
     }

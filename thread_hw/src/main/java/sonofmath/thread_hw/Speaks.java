@@ -11,10 +11,19 @@ package sonofmath.thread_hw;
  * @author jrmathson
  */
 public class Speaks{
+    OurClassroom lecture;
     Speaks() {
     }
     
-    void says(String message) {
-        System.out.println(message);
+    Speaks(OurClassroom _lecture) {
+        lecture = _lecture;
+    }
+    
+    void says(String message) throws InterruptedException {
+        if(lecture.isIn()) {
+            System.out.println(message);
+        } else {
+            System.out.println("Sorry class is over");
+        }
     }
 }

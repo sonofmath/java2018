@@ -39,14 +39,6 @@ public class OurClassroomTest {
     public void tearDown() {
     }
 
-    
-    @Test
-    public void testClassroom() {
-        OurClassroom thisclass = new OurClassroom(5,20);
-        thisclass.start();
-        
-    }
-
     /**
      * Test of isIn method, of class OurClassroom.
      */
@@ -68,15 +60,11 @@ public class OurClassroomTest {
         }
     }
 
-    /**
-     * Test of start method, of class OurClassroom.
-     */
     @Test
-    public void testStart() {
-        System.out.println("start");
-        OurClassroom instance = null;
-        instance.start();
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+    public void testStudents() {
+        OurClassroom instance = new OurClassroom(15, 1000);
+        assertEquals(instance.students.length, 15);
     }
+    
+    
 }

@@ -14,13 +14,14 @@ public class OurClassroom {
     long begin;
     Speaks speaks;
     Students students[];
+    Instructor drmacevoy;
     
     OurClassroom(int _size, int _classlength) {
         classsize = _size;
         classlength = _classlength;
-        speaks = new Speaks();
+        speaks = new Speaks(this);
         students = new Students[classsize];
-        for (int i = 0; i < students.length; ++i) {
+        for (int i = 1; i < students.length; ++i) {
             String _name = "Student #" + i;
             students[i] = new Students(this, speaks, _name);
         }
@@ -43,19 +44,17 @@ public class OurClassroom {
         }
     }
     
-    Instructor drmacevoy;
-    
     void start() {
         begin = System.currentTimeMillis();
         drmacevoy = new Instructor("Dr Macevoy", this, speaks);
         drmacevoy.start();
-        for (int i = 0; i < students.length; ++i) {
+        for (int i = 1; i < students.length; ++i) {
             students[i].start();
         }
     }
     
     public static void main(String[] args) {
-        OurClassroom java2018 = new OurClassroom(25,10000);
+        OurClassroom java2018 = new OurClassroom(5,10000);
         java2018.start();
     }
 }
