@@ -14,7 +14,7 @@ package com.github.sonofmath.sqlite;
 
 /**
  *
- * @author sonofmath
+ * @author jrmathson
  */
 import java.sql.Connection;
 import java.sql.DriverManager;
