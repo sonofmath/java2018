@@ -46,21 +46,12 @@ public class AppTest {
     @Test
     public void testInsert() {
         System.out.println("insert");
+        App instance = new App();
+        instance.createNewTable();
         String name = "Electronics";
         double capacity = 8000;
-        App instance = new App();
         instance.insert(name, capacity);
-    }
-
-    /**
-     * Test of createNewTable method, of class App.
-     */
-    @Test
-    public void testCreateNewTable() {
-        System.out.println("createNewTable");
-        App.createNewTable();
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        instance.selectAll();
     }
 
     /**
@@ -104,15 +95,50 @@ public class AppTest {
     }
 
     /**
-     * Test of appInfo method, of class App.
+     * Test of createNewDatabase method, of class App.
      */
     @Test
-    public void testAppInfo() {
-        System.out.println("appInfo");
+    public void testCreateNewDatabase() {
+        System.out.println("createNewDatabase");
         App instance = new App();
-        instance.appInfo();
+        instance.createNewDatabase();
         // TODO review the generated test code and remove the default call to fail.
         fail("The test case is a prototype.");
     }
-    
+
+    /**
+     * Test of main method, of class App.
+     */
+    @Test
+    public void testMain() {
+        System.out.println("main");
+        String[] args = null;
+        App.main(args);
+        // TODO review the generated test code and remove the default call to fail.
+        fail("The test case is a prototype.");
+    }
+
+    /**
+     * Test of run method, of class App.
+     */
+    @Test
+    public void testRun() {
+        System.out.println("run");
+        App instance = new App();
+        instance.run();
+        // TODO review the generated test code and remove the default call to fail.
+        fail("The test case is a prototype.");
+    }
+
+    /**
+     * Test of createNewTable method, of class App.
+     */
+    @Test
+    public void testCreateNewTable() {
+        System.out.println("createNewTable");
+        App instance = new App();
+        instance.createNewTable();
+        // TODO review the generated test code and remove the default call to fail.
+        fail("The test case is a prototype.");
+    }
 }
