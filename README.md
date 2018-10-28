@@ -15,6 +15,9 @@ Created a Bank Vault with Customers and Safe Deposit Boxes that they can add ite
 ## Threads HW - Our Classroom
 https://github.com/sonofmath/java2018/tree/master/thread_hw
 ```
-Created our class where speaking is the shared resource
+Created our class where speaking is the shared resource:
+- Synchronization not working as I had planned
+- Could not think of many good ways to test it so I only had a couple
+- Would like to spend more time with threading
 ```
 <img src="thread_hw/Capture.PNG">
