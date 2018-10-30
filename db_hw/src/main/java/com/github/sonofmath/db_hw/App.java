@@ -5,6 +5,7 @@
  */
 package com.github.sonofmath.db_hw;
 
+import java.sql.Blob;
 import java.sql.Connection;
 import java.sql.DatabaseMetaData;
 import java.sql.DriverManager;
@@ -20,12 +21,15 @@ import java.sql.Statement;
 public class App {
     public static String DEFAULT_DB = "jrs.db";
     public static String DEFAULT_URL = "jdbc:sqlite:" + DEFAULT_DB;
+    String testname;
+    Double testprice;
+    int testquantity;
 
     public final String url;
     App() { this(DEFAULT_URL); }
     App(String url) { this.url = url; }
 
-    private Connection connect() {
+    public Connection connect() {
         Connection conn = null;
         try {
             conn = DriverManager.getConnection(url);
@@ -54,15 +58,16 @@ public class App {
     // More CREATE
     public void createNewTable() {
         // SQL statement for creating a new table
-        String sql = "CREATE TABLE IF NOT EXISTS warehouses (\n"
-                + "	id integer PRIMARY KEY,\n"
-                + "	name text NOT NULL,\n"
-                + "	capacity real\n"
+        String sql = "CREATE TABLE IF NOT EXISTS cart (\n"
+                + "     name text PRIMARY KEY,\n"
+                + "	price real NOT NULL,\n"
+                + "	quantity integer\n"
                 + ");";
 
         try (Connection conn = connect();
                 Statement stmt = conn.createStatement()) {
             // create a new table
+            System.out.println("Created new table");
             stmt.execute(sql);
         } catch (SQLException e) {
             System.out.println(e.getMessage());
@@ -70,13 +75,14 @@ public class App {
     }
     
     // More CREATE
-    public void insert(String name, double capacity) {
-        String sql = "INSERT INTO warehouses(name,capacity) VALUES(?,?)";
+    public void insert(String name, double price, int quantity) {
+        String sql = "INSERT INTO cart (name, price, quantity) VALUES(?,?,?)";
 
         try (Connection conn = this.connect();
                 PreparedStatement pstmt = conn.prepareStatement(sql)) {
             pstmt.setString(1, name);
-            pstmt.setDouble(2, capacity);
+            pstmt.setDouble(2, price);
+            pstmt.setInt(3, quantity);
             pstmt.executeUpdate();
         } catch (SQLException e) {
             System.out.println(e.getMessage());
@@ -85,7 +91,7 @@ public class App {
     
     // READ
     public void selectAll(){
-        String sql = "SELECT id, name, capacity FROM warehouses";
+        String sql = "SELECT name, price, quantity FROM cart";
         
         try (Connection conn = this.connect();
              Statement stmt  = conn.createStatement();
@@ -93,9 +99,30 @@ public class App {
             
             // loop through the result set
             while (rs.next()) {
-                System.out.println(rs.getInt("id") +  "\t" + 
-                                   rs.getString("name") + "\t" +
-                                   rs.getDouble("capacity"));
+                System.out.println(rs.getString("name") +  "\t" + 
+                                   rs.getDouble("price") + "\t" +
+                                   rs.getInt("quantity"));
+            }
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+        }
+    }
+    
+    public void selectItem(String item) {
+        String sql = "SELECT name, price, quantity FROM cart WHERE name = '" + item + "'";
+        
+        try (Connection conn = this.connect();
+             Statement stmt  = conn.createStatement();
+             ResultSet rs    = stmt.executeQuery(sql)){
+            
+            testname = rs.getString("name");
+            testprice = rs.getDouble("price");
+            testquantity = rs.getInt("quantity");
+            // loop through the result set
+            while (rs.next()) {
+                System.out.println(rs.getString("name") +  "\t" + 
+                                   rs.getDouble("price") + "\t" +
+                                   rs.getInt("quantity"));
             }
         } catch (SQLException e) {
             System.out.println(e.getMessage());
@@ -103,18 +130,16 @@ public class App {
     }
     
     // UPDATE
-    public void update(int id, String name, double capacity) {
-        String sql = "UPDATE warehouses SET name = ? , "
-                + "capacity = ? "
-                + "WHERE id = ?";
+    public void update(String name, int quantity) {
+        String sql = "UPDATE carts SET quantity = 2"
+                + "WHERE name = pickles";
  
         try (Connection conn = this.connect();
                 PreparedStatement pstmt = conn.prepareStatement(sql)) {
  
             // set the corresponding param
             pstmt.setString(1, name);
-            pstmt.setDouble(2, capacity);
-            pstmt.setInt(3, id);
+            pstmt.setInt(2, quantity);
             // update 
             pstmt.executeUpdate();
         } catch (SQLException e) {
@@ -123,14 +148,14 @@ public class App {
     }
     
     // DELETE
-    public void delete(int id) {
-        String sql = "DELETE FROM warehouses WHERE id = ?";
+    public void delete(String name) {
+        String sql = "DELETE FROM cart WHERE name = ?";
  
         try (Connection conn = this.connect();
                 PreparedStatement pstmt = conn.prepareStatement(sql)) {
  
             // set the corresponding param
-            pstmt.setInt(1, id);
+            pstmt.setString(1, name);
             // execute the delete statement
             pstmt.executeUpdate();
  
@@ -144,10 +169,13 @@ public class App {
     }
 
     void run() {
-        createNewDatabase();
-        createNewTable();
-        insert("Hard Drives", 2000);
+        //createNewDatabase();
+        //createNewTable();
+        connect();
+        //insert("avocados", .89, 4);
+        //insert("pickles", 2.25, 1);
+        //selectItem("avocados");
+        update("pickles", 2);
         selectAll();
-        update(3, "Finished Products", 5500);
     }
 }
