@@ -40,9 +40,6 @@ public class AppTest {
     public void tearDown() {
     }
 
-    /**
-     * Test of insert method, of class App.
-     */
     @Test
     public void testInsert() {
         System.out.println("insert");
@@ -54,9 +51,6 @@ public class AppTest {
         assertEquals(instance.testquantity, 2);
     }
 
-    /**
-     * Test of selectItem method, of class App.
-     */
     @Test
     public void testSelectItem() {
         System.out.println("selectItem");
@@ -66,5 +60,18 @@ public class AppTest {
         assertEquals(instance.testname, "apples");
         instance.selectItem("avocados");
         assertEquals(instance.testname, "avocados");
+    }
+    
+    @Test
+    public void testUpdateItemQuantity() {
+        System.out.println("updateItemQuantity");
+        App instance = new App();
+        instance.updateItemQuantity("pickles", 4);
+        instance.selectItem("pickles");
+        assertEquals(instance.testquantity, 4);
+        
+        instance.updateItemQuantity("pickles", 1);
+        instance.selectItem("pickles");
+        assertEquals(instance.testquantity, 1);
     }
 }

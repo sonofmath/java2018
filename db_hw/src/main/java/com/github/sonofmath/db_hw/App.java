@@ -130,16 +130,15 @@ public class App {
     }
     
     // UPDATE
-    public void update(String name, int quantity) {
-        String sql = "UPDATE carts SET quantity = 2"
-                + "WHERE name = pickles";
+    public void updateItemQuantity(String name, int quantity) {
+        String sql = "UPDATE cart SET quantity = ? WHERE name = ?";
  
         try (Connection conn = this.connect();
                 PreparedStatement pstmt = conn.prepareStatement(sql)) {
  
             // set the corresponding param
-            pstmt.setString(1, name);
-            pstmt.setInt(2, quantity);
+            pstmt.setInt(1, quantity);
+            pstmt.setString(2, name);
             // update 
             pstmt.executeUpdate();
         } catch (SQLException e) {
@@ -175,7 +174,7 @@ public class App {
         //insert("avocados", .89, 4);
         //insert("pickles", 2.25, 1);
         //selectItem("avocados");
-        update("pickles", 2);
+        updateItemQuantity("grapes", 2);
         selectAll();
     }
 }
