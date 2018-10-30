@@ -74,4 +74,21 @@ public class AppTest {
         instance.selectItem("pickles");
         assertEquals(instance.testquantity, 1);
     }
+    
+    @Test
+    public void testHasItem() {
+        System.out.println("hasItem");
+        App instance = new App();
+        assertTrue(instance.hasItem("pickles"));
+        assertFalse(instance.hasItem("pears"));
+    }
+    
+    @Test
+    public void testItemExists() {
+        App instance = new App();
+        instance.itemExists("pickles");
+        assertEquals(instance.count, 1);
+        instance.itemExists("grapefruit");
+        assertEquals(instance.count, 0);
+    }
 }

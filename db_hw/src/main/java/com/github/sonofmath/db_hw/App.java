@@ -5,7 +5,6 @@
  */
 package com.github.sonofmath.db_hw;
 
-import java.sql.Blob;
 import java.sql.Connection;
 import java.sql.DatabaseMetaData;
 import java.sql.DriverManager;
@@ -24,10 +23,11 @@ public class App {
     String testname;
     Double testprice;
     int testquantity;
+    int count;
 
     public final String url;
-    App() { this(DEFAULT_URL); }
-    App(String url) { this.url = url; }
+    App() { this(DEFAULT_URL); count = 0; }
+    App(String url) { this.url = url; count = 0; }
 
     public Connection connect() {
         Connection conn = null;
@@ -89,6 +89,31 @@ public class App {
         }
     }
     
+    public void itemExists(String itemname) {
+        String sql = "SELECT name FROM cart WHERE name = '" + itemname + "'";
+        count = 0;
+        try (Connection conn = this.connect();
+             Statement stmt  = conn.createStatement();
+             ResultSet rs    = stmt.executeQuery(sql)){
+            
+            while (rs.next()) {
+                count = 1;
+                System.out.println(rs.getString("name"));
+            }
+            
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }  
+    }
+    
+    public boolean hasItem(String itemname) {
+        itemExists(itemname);
+        if (count == 1) {
+            return true;
+        } else {
+            return false;
+        }
+    }
     // READ
     public void selectAll(){
         String sql = "SELECT name, price, quantity FROM cart";
@@ -174,7 +199,8 @@ public class App {
         //insert("avocados", .89, 4);
         //insert("pickles", 2.25, 1);
         //selectItem("avocados");
-        updateItemQuantity("grapes", 2);
+        //updateItemQuantity("grapes", 2);
         selectAll();
+        //itemExists("pickles");
     }
 }
