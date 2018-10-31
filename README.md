@@ -22,7 +22,7 @@ Created our class where speaking is the shared resource:
 ```
 <img src="thread_hw/Capture.PNG">
 
-## Sqlite Daabase HW - Shopping Cart
+## Sqlite Database HW - Shopping Cart
 https://github.com/sonofmath/java2018/tree/master/db_hw
 ```
 Created a "cart" that I can add items to, update the quantity, remove, and just see what I got.
