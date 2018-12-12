@@ -2,7 +2,7 @@
 
 # FINAL PROJECT LINK
 - https://github.com/Blackbird002/PlantFarm
-<img src="SignUp.PNG">
+<img src="FinalProject/SignUp.PNG">
 
 ## Kattis Problem - Soylent
 Solution - https://github.com/sonofmath/java2018/tree/master/Kattis1
